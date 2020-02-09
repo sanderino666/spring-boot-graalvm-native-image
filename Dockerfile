@@ -1,5 +1,9 @@
-FROM oracle/graalvm-ce:19.3.1-java11
+FROM oracle/graalvm-ce:19.3.1-java11 as graalvm
+RUN gu install native-image
+
+COPY ./target/demo /home/app/demo
+WORKDIR /home/app
+
 EXPOSE 8080
-ARG JAR_FILE=target/demo-0.0.1-SNAPSHOT.jar
-ADD ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["/home/app/demo", "-Djava.library.path=/app"]
+

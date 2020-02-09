@@ -3,22 +3,22 @@ package com.example.demo;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class ConferenceService {
 
-    private static final List<Conference> CONFERENCES = Arrays.asList(
-            new Conference("Greach"),
-            new Conference("GR8Conf EU"),
-            new Conference("Micronaut Summit"),
-            new Conference("Devoxx Belgium"),
-            new Conference("Oracle Code One"),
-            new Conference("CommitConf"),
-            new Conference("Codemotion Madrid")
+    private static final List<String> CONFERENCES = Arrays.asList(
+            "Greach",
+            "GR8Conf EU",
+            "Micronaut Summit",
+            "Devoxx Belgium",
+            "Oracle Code One",
+            "CommitConf",
+            "Codemotion Madrid"
     );
 
-    public Conference randomConf() {
+    public String randomConf() {
         return CONFERENCES.get(new Random().nextInt(CONFERENCES.size()));
     }
 }
